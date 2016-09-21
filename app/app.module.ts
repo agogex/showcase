@@ -6,17 +6,21 @@ import { AppComponent }   from './app.component';
 import { ProductComponent} from './product.component';
 import { ColorPicComponent} from './color-pic.component';
 import { TopMenu } from './top-menu.component';
+import { CartComponent } from './cart.component';
+import { routing } from './app.routing';
 
 @NgModule({
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
+        routing
     ],
     declarations: [
         AppComponent,
         ProductComponent,
         ColorPicComponent,
-        TopMenu
+        TopMenu,
+        CartComponent
     ],
     bootstrap: [AppComponent]
 })

@@ -19,7 +19,8 @@ var TopMenu = (function () {
     TopMenu = __decorate([
         core_1.Component({
             selector: 'top-menu',
-            templateUrl: 'app/top-menu.component.html'
+            templateUrl: 'app/top-menu.component.html',
+            styles: ["\n        .menu {\n            margin-bottom: 20px !important;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])
     ], TopMenu);

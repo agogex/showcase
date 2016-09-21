@@ -15,6 +15,8 @@ var app_component_1 = require('./app.component');
 var product_component_1 = require('./product.component');
 var color_pic_component_1 = require('./color-pic.component');
 var top_menu_component_1 = require('./top-menu.component');
+var cart_component_1 = require('./cart.component');
+var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -22,13 +24,15 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                app_routing_1.routing
             ],
             declarations: [
                 app_component_1.AppComponent,
                 product_component_1.ProductComponent,
                 color_pic_component_1.ColorPicComponent,
-                top_menu_component_1.TopMenu
+                top_menu_component_1.TopMenu,
+                cart_component_1.CartComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

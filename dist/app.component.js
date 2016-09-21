@@ -14,10 +14,6 @@ var AppComponent = (function () {
     function AppComponent(productService) {
         this.productService = productService;
     }
-    AppComponent.prototype.setColor = function () {
-        console.log('setColor invoke!');
-        return "red";
-    };
     AppComponent.prototype.getQuantity = function () {
         console.log('getQuantity invoke!');
         return this.productService.getProductsQuantity();
@@ -25,7 +21,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n        <top-menu [productQuantity]=\"getQuantity()\"></top-menu>\n        <h1 [style.color]=\"setColor()\">Showcase</h1>\n        <product></product>\n    ",
+            template: "\n        <top-menu [productQuantity]=\"getQuantity()\"></top-menu>\n        <router-outlet></router-outlet>\n    ",
             providers: [product_service_1.ProductService]
         }), 
         __metadata('design:paramtypes', [product_service_1.ProductService])

@@ -1,8 +1,8 @@
 <div class="ui menu">
     <div class="header item">
-        Showcase
+        <a routerLink="/">Showcase</a>
     </div>
-    <a class="item right">
+    <a class="item right" routerLink="/cart">
         <i class="add to cart icon"></i>
         <div class="floating circular ui teal label" *ngIf="productQuantity > 0">{{productQuantity}}</div>
     </a>
