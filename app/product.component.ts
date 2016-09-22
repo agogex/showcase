@@ -14,7 +14,7 @@ export class ProductComponent implements OnInit {
     constructor(private productService: ProductService) { }
 
     addToCart(product: Product, error: any): void {
-        if(product.selectedColor) {
+        if (product.selectedColor) {
             this.productService.addProductsToCart(product);
         } else {
             error = true;

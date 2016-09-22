@@ -15,7 +15,6 @@ export class AppComponent {
     constructor(private productService: ProductService) { }
     
     getQuantity(): number {
-        console.log('getQuantity invoke!');
         return this.productService.getProductsQuantity();
     }
 }

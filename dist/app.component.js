@@ -15,7 +15,6 @@ var AppComponent = (function () {
         this.productService = productService;
     }
     AppComponent.prototype.getQuantity = function () {
-        console.log('getQuantity invoke!');
         return this.productService.getProductsQuantity();
     };
     AppComponent = __decorate([
