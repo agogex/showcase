@@ -23,6 +23,11 @@ export class ProductService {
         localStorage.setItem("products", JSON.stringify(products));
     }
 
+    getProductsFromCart(): Promise<Product[]> {
+        let products: Product[] = JSON.parse(localStorage.getItem('products')) || [];
+        return Promise.resolve(products);
+    }
+
     getProductsQuantity(): number {
         let products: Product[] = JSON.parse(localStorage.getItem('products')) || [];
         let quantity: number = 0;

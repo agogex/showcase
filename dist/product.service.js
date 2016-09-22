@@ -29,6 +29,10 @@ var ProductService = (function () {
             products.push(product);
         localStorage.setItem("products", JSON.stringify(products));
     };
+    ProductService.prototype.getProductsFromCart = function () {
+        var products = JSON.parse(localStorage.getItem('products')) || [];
+        return Promise.resolve(products);
+    };
     ProductService.prototype.getProductsQuantity = function () {
         var products = JSON.parse(localStorage.getItem('products')) || [];
         var quantity = 0;

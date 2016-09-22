@@ -9,16 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var product_service_1 = require('./product.service');
 var CartComponent = (function () {
-    function CartComponent() {
-        this.message = 'Todo Cart';
+    function CartComponent(productService) {
+        this.productService = productService;
     }
+    CartComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.productService.getProductsFromCart().then(function (products) { return _this.products = products; });
+    };
     CartComponent = __decorate([
         core_1.Component({
             selector: 'cart',
-            template: '{{message}}'
+            templateUrl: 'app/cart.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [product_service_1.ProductService])
     ], CartComponent);
     return CartComponent;
 }());

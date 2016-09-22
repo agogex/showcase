@@ -1,0 +1,21 @@
+<table class="ui table">
+    <thead>
+        <tr>
+            <th class="nine wide">Product Name</th>
+            <th class="three wide">Quantity</th>
+            <th class="three wide">Price</th>
+            <th class="one wide"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>
+                <img class="ui middle aligned tiny image" [src]="product.image">
+<span>{{product.name}} {{product.colorSelected}}</span>
+                </td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price}}</td>
+            <td><i class="remove icon"></i></td>
+        </tr>
+    </tbody>
+</table>
