@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product, CartItem } from './models';
 import { ProductService } from './product.service';
+import { Product, CartItem } from './models';
+var alertify = require('alertify');
 
 @Component({
     selector: 'product',
@@ -15,6 +16,7 @@ export class ProductComponent implements OnInit {
     addToCart(product: Product): void {
         this.productService.addProductsToCart(product);
         this.productService.changingCart(this.productService.getProductsQuantity());
+        alertify.success(`${product.name} was added to Cart`);
     }
 
     ngOnInit(): void {

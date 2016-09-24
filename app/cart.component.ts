@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Product } from './models';
 import { ProductService } from'./product.service';
+var alertify = require('alertify');
 
 @Component({
     selector: 'cart',
@@ -19,6 +20,7 @@ export class CartComponent implements OnInit{
         this.productService.removeProductsFromCart(product);
         this.productService.changingCart(this.productService.getProductsQuantity());
         this.productService.getProductsFromCart().then(products =>  this.products = products);
+        alertify.success(`${product.name} was removed from Cart`);
     }
 
     constructor(private productService: ProductService){

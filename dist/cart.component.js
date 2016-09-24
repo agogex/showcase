@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var product_service_1 = require('./product.service');
+var alertify = require('alertify');
 var CartComponent = (function () {
     function CartComponent(productService) {
         var _this = this;
@@ -21,6 +22,7 @@ var CartComponent = (function () {
         this.productService.removeProductsFromCart(product);
         this.productService.changingCart(this.productService.getProductsQuantity());
         this.productService.getProductsFromCart().then(function (products) { return _this.products = products; });
+        alertify.success(product.name + " was removed from Cart");
     };
     CartComponent.prototype.ngOnInit = function () {
         var _this = this;
