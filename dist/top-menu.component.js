@@ -9,20 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var product_service_1 = require('./product.service');
 var TopMenu = (function () {
-    function TopMenu() {
+    function TopMenu(productService) {
+        var _this = this;
+        this.productService = productService;
+        this.subscription = productService.changeCart$.subscribe(function (quantity) { return _this.productQuantity = quantity; });
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], TopMenu.prototype, "productQuantity", void 0);
+    TopMenu.prototype.ngOnInit = function () {
+        this.productQuantity = this.productService.getProductsQuantity();
+    };
+    TopMenu.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
     TopMenu = __decorate([
         core_1.Component({
             selector: 'top-menu',
             templateUrl: 'app/top-menu.component.html',
             styles: ["\n        .menu {\n            margin-bottom: 20px !important;\n        }\n    "]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [product_service_1.ProductService])
     ], TopMenu);
     return TopMenu;
 }());

@@ -1,15 +1,31 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ProductService } from './product.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'top-menu',
     templateUrl: 'app/top-menu.component.html',
-    styles: [ `
+    styles: [`
         .menu {
             margin-bottom: 20px !important;
         }
     ` ]
 })
 
-export class TopMenu {
-    @Input() productQuantity: number;
+export class TopMenu implements OnInit, OnDestroy{
+    // @Input() productQuantity: number;
+    productQuantity: number;
+    subscription: Subscription;
+
+    constructor(private productService: ProductService) {
+        this.subscription = productService.changeCart$.subscribe(quantity => this.productQuantity = quantity);
+    }
+
+    ngOnInit():void {
+        this.productQuantity = this.productService.getProductsQuantity();
+    }
+
+    ngOnDestroy():void {
+        this.subscription.unsubscribe();
+    }
 }

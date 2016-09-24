@@ -8,11 +8,11 @@ import { PRODUCTS } from './products';
 @Injectable()
 
 export class ProductService {
-    private addToCartSource = new Subject<number>();
-    addToCart$ = this.addToCartSource.asObservable();
+    private changeCartSource = new Subject<number>();
+    changeCart$ = this.changeCartSource.asObservable();
 
-    addingToCart(quantity: number) {
-        this.addToCartSource.next(quantity);
+    changingCart(quantity: number) {
+        this.changeCartSource.next(quantity);
     }
 
     getProducts(): Promise<Product[]> {
@@ -29,6 +29,12 @@ export class ProductService {
             }
         });
         if (insertNew) products.push(product);
+        localStorage.setItem("products", JSON.stringify(products));
+    }
+
+    removeProductsFromCart(product: Product): void {
+        let products: Product[] = JSON.parse(localStorage.getItem('products')) || [];
+        products = products.filter(item => !(item.name === product.name && item.selectedColor === product.selectedColor));
         localStorage.setItem("products", JSON.stringify(products));
     }
 

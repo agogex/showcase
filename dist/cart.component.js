@@ -12,20 +12,29 @@ var core_1 = require('@angular/core');
 var product_service_1 = require('./product.service');
 var CartComponent = (function () {
     function CartComponent(productService) {
+        var _this = this;
         this.productService = productService;
+        this.subscription = productService.changeCart$.subscribe(function (quantity) { return _this.productQuantity = quantity; });
     }
+    CartComponent.prototype.removeFromCart = function (product) {
+        var _this = this;
+        this.productService.removeProductsFromCart(product);
+        this.productService.changingCart(this.productService.getProductsQuantity());
+        this.productService.getProductsFromCart().then(function (products) { return _this.products = products; });
+    };
     CartComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.productService.getProductsFromCart().then(function (products) { _this.products = products; console.log(_this.products.length); });
+        this.productService.getProductsFromCart().then(function (products) { return _this.products = products; });
+        this.productQuantity = this.productService.getProductsQuantity();
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], CartComponent.prototype, "productQuantity", void 0);
+    CartComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
     CartComponent = __decorate([
         core_1.Component({
             selector: 'cart',
-            templateUrl: 'app/cart.component.html'
+            templateUrl: 'app/cart.component.html',
+            styles: [".remove { cursor: pointer; }"]
         }), 
         __metadata('design:paramtypes', [product_service_1.ProductService])
     ], CartComponent);

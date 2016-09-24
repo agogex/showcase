@@ -20,7 +20,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n        <top-menu [productQuantity]=\"getQuantity()\"></top-menu>\n        <router-outlet></router-outlet>\n    ",
+            template: "\n        <top-menu></top-menu>\n        <router-outlet></router-outlet>\n    ",
             providers: [product_service_1.ProductService]
         }), 
         __metadata('design:paramtypes', [product_service_1.ProductService])

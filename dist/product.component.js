@@ -16,6 +16,7 @@ var ProductComponent = (function () {
     }
     ProductComponent.prototype.addToCart = function (product) {
         this.productService.addProductsToCart(product);
+        this.productService.changingCart(this.productService.getProductsQuantity());
     };
     ProductComponent.prototype.ngOnInit = function () {
         var _this = this;

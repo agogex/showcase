@@ -5,7 +5,7 @@ import { ProductService } from './product.service';
 @Component({
     selector: 'my-app',
     template: `
-        <top-menu [productQuantity]="getQuantity()"></top-menu>
+        <top-menu></top-menu>
         <router-outlet></router-outlet>
     `,
     providers: [ProductService]

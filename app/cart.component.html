@@ -1,4 +1,4 @@
-<table class="ui table">
+<table class="ui table" *ngIf="productQuantity > 0">
     <thead>
         <tr>
             <th class="nine wide">Product Name</th>
@@ -15,7 +15,7 @@
             </td>
             <td>{{product.quantity}}</td>
             <td>{{product.price | currency:'USD':true}}</td>
-            <td><i class="remove icon"></i></td>
+            <td><i class="remove icon" (click)="removeFromCart(product)"></i></td>
         </tr>
     </tbody>
 </table>

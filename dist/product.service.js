@@ -13,11 +13,11 @@ var Subject_1 = require('rxjs/Subject');
 var products_1 = require('./products');
 var ProductService = (function () {
     function ProductService() {
-        this.addToCartSource = new Subject_1.Subject();
-        this.addToCart$ = this.addToCartSource.asObservable();
+        this.changeCartSource = new Subject_1.Subject();
+        this.changeCart$ = this.changeCartSource.asObservable();
     }
-    ProductService.prototype.addingToCart = function (quantity) {
-        this.addToCartSource.next(quantity);
+    ProductService.prototype.changingCart = function (quantity) {
+        this.changeCartSource.next(quantity);
     };
     ProductService.prototype.getProducts = function () {
         return Promise.resolve(products_1.PRODUCTS);
@@ -33,6 +33,11 @@ var ProductService = (function () {
         });
         if (insertNew)
             products.push(product);
+        localStorage.setItem("products", JSON.stringify(products));
+    };
+    ProductService.prototype.removeProductsFromCart = function (product) {
+        var products = JSON.parse(localStorage.getItem('products')) || [];
+        products = products.filter(function (item) { return !(item.name === product.name && item.selectedColor === product.selectedColor); });
         localStorage.setItem("products", JSON.stringify(products));
     };
     ProductService.prototype.getProductsFromCart = function () {
