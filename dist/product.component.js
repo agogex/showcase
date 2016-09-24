@@ -14,13 +14,8 @@ var ProductComponent = (function () {
     function ProductComponent(productService) {
         this.productService = productService;
     }
-    ProductComponent.prototype.addToCart = function (product, error) {
-        if (product.selectedColor) {
-            this.productService.addProductsToCart(product);
-        }
-        else {
-            error = true;
-        }
+    ProductComponent.prototype.addToCart = function (product) {
+        this.productService.addProductsToCart(product);
     };
     ProductComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -29,8 +24,7 @@ var ProductComponent = (function () {
     ProductComponent = __decorate([
         core_1.Component({
             selector: 'product',
-            templateUrl: 'app/product.component.html',
-            styleUrls: ['app/product.component.css']
+            templateUrl: 'app/product.component.html'
         }), 
         __metadata('design:paramtypes', [product_service_1.ProductService])
     ], ProductComponent);

@@ -16,8 +16,12 @@ var CartComponent = (function () {
     }
     CartComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.productService.getProductsFromCart().then(function (products) { return _this.products = products; });
+        this.productService.getProductsFromCart().then(function (products) { _this.products = products; console.log(_this.products.length); });
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], CartComponent.prototype, "productQuantity", void 0);
     CartComponent = __decorate([
         core_1.Component({
             selector: 'cart',

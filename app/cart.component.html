@@ -11,10 +11,10 @@
         <tr *ngFor="let product of products">
             <td>
                 <img class="ui middle aligned tiny image" [src]="product.image">
-<span>{{product.name}} {{product.colorSelected}}</span>
-                </td>
+                <span>{{product.name}} {{product.selectedColor}}</span>
+            </td>
             <td>{{product.quantity}}</td>
-            <td>{{product.price}}</td>
+            <td>{{product.price | currency:'USD':true}}</td>
             <td><i class="remove icon"></i></td>
         </tr>
     </tbody>

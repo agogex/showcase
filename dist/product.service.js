@@ -9,10 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Subject_1 = require('rxjs/Subject');
 var products_1 = require('./products');
 var ProductService = (function () {
     function ProductService() {
+        this.addToCartSource = new Subject_1.Subject();
+        this.addToCart$ = this.addToCartSource.asObservable();
     }
+    ProductService.prototype.addingToCart = function (quantity) {
+        this.addToCartSource.next(quantity);
+    };
     ProductService.prototype.getProducts = function () {
         return Promise.resolve(products_1.PRODUCTS);
     };

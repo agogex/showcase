@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+
 
 import { Product } from './models';
 import { PRODUCTS } from './products';
@@ -6,6 +8,13 @@ import { PRODUCTS } from './products';
 @Injectable()
 
 export class ProductService {
+    private addToCartSource = new Subject<number>();
+    addToCart$ = this.addToCartSource.asObservable();
+
+    addingToCart(quantity: number) {
+        this.addToCartSource.next(quantity);
+    }
+
     getProducts(): Promise<Product[]> {
         return Promise.resolve(PRODUCTS);
     }

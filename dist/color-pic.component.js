@@ -14,7 +14,7 @@ var ColorPicComponent = (function () {
         this.colorSelected = new core_1.EventEmitter();
     }
     ColorPicComponent.prototype.ngOnInit = function () {
-        this.selectedColor = this.colors[0];
+        this.selectColor(this.colors[0]);
     };
     ColorPicComponent.prototype.selectColor = function (color) {
         this.selectedColor = color;

@@ -13,7 +13,7 @@ export class ColorPicComponent implements OnInit {
     selectedColor: string;
 
     ngOnInit (): void {
-        this.selectedColor = this.colors[0];
+        this.selectColor(this.colors[0]);
     }
 
     selectColor(color: string): string {
