@@ -12,3 +12,9 @@ h2, h3 {
 body {
   margin: 2em;
 }
+/* theming for alertify */
+.alertify-notifier .ajs-message.ajs-success {
+  color: #fff;
+  background: rgba(0, 156, 149, 0.95);
+   text-shadow: unset;
+}
