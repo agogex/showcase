@@ -1,0 +1,13 @@
+[Service]
+WorkingDirectory=/var/www/showcase
+ExecStart=/usr/bin/node server.js
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=showcase-app
+User=web
+Group=web
+Environment='NODE_ENV=production'
+
+[Install]
+WantedBy=multi-user.target
