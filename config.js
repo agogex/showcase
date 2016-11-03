@@ -1,4 +1,4 @@
 module.exports = {
-    "database": "mongo://localhost/showcase",
+    "database": "mongodb://localhost/showcase",
     "port": process.env.PORT || 8080
 }

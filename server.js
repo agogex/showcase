@@ -2,7 +2,7 @@ const express = require('express'),
 	app = express(),
 	port = process.env.PORT || 8080,
 	mongoose = require('mongoose'),
-	config = require('config');
+	config = require('./config');
 
 
 app.use(express.static('public'));
