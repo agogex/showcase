@@ -2,7 +2,8 @@ const Product = require('../models/product');
 
 module.exports = {
     seedProducts: seedProducts,
-    showProducts: showProducts
+    showProducts: showProducts,
+    createProduct: createProduct
 }
 
 function seedProducts(req, res) {
@@ -83,4 +84,20 @@ function showProducts(req, res) {
 
         res.json(products);
     });
+}
+
+function createProduct(req, res) {
+
+console.log(req.body);
+
+    let newProduct = new Product({
+            name: req.body.name,
+            colors: req.body.colors,
+            price: req.body.price,
+            image: 'img/image.png',
+            description: req.body.description,
+            selectedColor: null,
+            quantity: 1
+        });
+    newProduct.save();
 }

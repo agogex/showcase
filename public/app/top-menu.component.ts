@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
     ` ]
 })
 
-export class TopMenu implements OnInit, OnDestroy{
+export class TopMenu implements OnInit, OnDestroy {
     // @Input() productQuantity: number;
     productQuantity: number;
     subscription: Subscription;
@@ -21,11 +21,11 @@ export class TopMenu implements OnInit, OnDestroy{
         this.subscription = productService.changeCart$.subscribe(quantity => this.productQuantity = quantity);
     }
 
-    ngOnInit():void {
+    ngOnInit(): void {
         this.productQuantity = this.productService.getProductsQuantity();
     }
 
-    ngOnDestroy():void {
+    ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

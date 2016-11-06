@@ -1,23 +1,23 @@
-<form class="ui form">
+<form class="ui form" (ngSubmit)="onSubmit()">
     <div class="field">
         <label>Product Name</label>
-        <input name="name" placeholder="Product Name" type="text" [value]="product.name">
+        <input name="name" placeholder="Product Name" type="text" [(ngModel)]="product.name">
     </div>
     <div class="field">
         <label>Price</label>
-        <input name="price" placeholder="Price" type="text" [value]="product.price">
+        <input name="price" placeholder="Price" type="text" [(ngModel)]="product.price">
     </div>
     <div class="field">
         <label>Image</label>
-        <input name="image" placeholder="Image" type="text" [value]="product.image">
+        <input name="image" placeholder="Image" type="text" [(ngModel)]="product.image">
     </div>
     <div class="field">
         <label>Description</label>
-        <input name="description" placeholder="Description" type="text" [value]="product.description">
+        <input name="description" placeholder="Description" type="text" [(ngModel)]="product.description">
     </div>
     <div class="field">
         <label>Colors</label>
-        <input name="colors" placeholder="Colors" type="text" [value]="product.colors">
+        <input name="colors" placeholder="Colors" type="text" [(ngModel)]="product.colors">
     </div>
     <button class="ui button" type="submit">Submit</button>
 </form>

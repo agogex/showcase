@@ -6,3 +6,4 @@ module.exports = router;
 
 // router.get('/products/seed', products.seedProducts);
 router.get('/products', products.showProducts);
+router.post('/product', products.createProduct);

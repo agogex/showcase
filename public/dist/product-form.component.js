@@ -9,21 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var product_service_1 = require('./product.service');
 var models_1 = require('./models');
 var ProductFormComponent = (function () {
-    function ProductFormComponent() {
+    function ProductFormComponent(productService) {
+        this.productService = productService;
         this.product = new models_1.Product();
         this.submitted = false;
     }
-    ProductFormComponent.prototype.onsubmit = function () {
+    ProductFormComponent.prototype.onSubmit = function () {
         this.submitted = true;
+        this.productService.createNewProduct(this.product);
+        console.log(this.product);
     };
     ProductFormComponent = __decorate([
         core_1.Component({
             selector: 'product-form',
             templateUrl: 'app/product-form.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [product_service_1.ProductService])
     ], ProductFormComponent);
     return ProductFormComponent;
 }());
