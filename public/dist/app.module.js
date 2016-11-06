@@ -18,6 +18,7 @@ var color_pic_component_1 = require('./color-pic.component');
 var top_menu_component_1 = require('./top-menu.component');
 var cart_component_1 = require('./cart.component');
 var app_routing_1 = require('./app.routing');
+var product_form_component_1 = require('./product-form.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,7 +35,8 @@ var AppModule = (function () {
                 product_component_1.ProductComponent,
                 color_pic_component_1.ColorPicComponent,
                 top_menu_component_1.TopMenu,
-                cart_component_1.CartComponent
+                cart_component_1.CartComponent,
+                product_form_component_1.ProductFormComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

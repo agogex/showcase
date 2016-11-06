@@ -2,6 +2,9 @@
     <div class="header item">
         <a routerLink="/">Showcase</a>
     </div>
+    <a class="item" routerLink="/product-form">
+        <i class="add circle icon"></i>
+    </a>
     <a class="item right" routerLink="/cart">
         <i class="add to cart icon"></i>
         <div class="floating circular ui teal label" *ngIf="productQuantity > 0">{{productQuantity}}</div>

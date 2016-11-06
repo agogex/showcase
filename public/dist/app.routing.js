@@ -2,6 +2,7 @@
 var router_1 = require('@angular/router');
 var product_component_1 = require('./product.component');
 var cart_component_1 = require('./cart.component');
+var product_form_component_1 = require('./product-form.component');
 var routes = [
     {
         path: '',
@@ -13,6 +14,9 @@ var routes = [
     }, {
         path: 'cart',
         component: cart_component_1.CartComponent
+    }, {
+        path: 'product-form',
+        component: product_form_component_1.ProductFormComponent
     }
 ];
 exports.routing = router_1.RouterModule.forRoot(routes);

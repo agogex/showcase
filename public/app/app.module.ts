@@ -9,6 +9,7 @@ import { ColorPicComponent} from './color-pic.component';
 import { TopMenu } from './top-menu.component';
 import { CartComponent } from './cart.component';
 import { routing } from './app.routing';
+import { ProductFormComponent } from './product-form.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { routing } from './app.routing';
         ProductComponent,
         ColorPicComponent,
         TopMenu,
-        CartComponent
+        CartComponent,
+        ProductFormComponent
     ],
     bootstrap: [AppComponent]
 })
