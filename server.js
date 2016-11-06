@@ -1,7 +1,7 @@
 const express = require('express'),
 	app = express(),
-	port = process.env.PORT || 8080,
 	mongoose = require('mongoose'),
+	bodyParser = require('body-parser'),
 	config = require('./config');
 
 
@@ -10,10 +10,12 @@ app.use('/static', express.static('node_modules'));
 
 mongoose.connect(config.database);
 
+app.use(require('./app/routes'));
+
 app.get('*', function (req, res) {
 	res.sendFile(__dirname + '/public/index.html');
 });
 
-app.listen(port, function () {
-	console.log('Example app listening on port ' + port);
+app.listen(config.port, function () {
+	console.log('Example app listening on port ' + config.port);
 });

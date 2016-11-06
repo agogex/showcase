@@ -9,18 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
 var Subject_1 = require('rxjs/Subject');
-var products_1 = require('./products');
+require('rxjs/add/operator/toPromise');
 var ProductService = (function () {
-    function ProductService() {
+    function ProductService(http) {
+        this.http = http;
         this.changeCartSource = new Subject_1.Subject();
         this.changeCart$ = this.changeCartSource.asObservable();
     }
+    ProductService.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    };
     ProductService.prototype.changingCart = function (quantity) {
         this.changeCartSource.next(quantity);
     };
     ProductService.prototype.getProducts = function () {
-        return Promise.resolve(products_1.PRODUCTS);
+        return this.http.get('products').toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
     };
     ProductService.prototype.addProductsToCart = function (product) {
         var products = JSON.parse(localStorage.getItem('products')) || [];
@@ -59,7 +65,7 @@ var ProductService = (function () {
     };
     ProductService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], ProductService);
     return ProductService;
 }());

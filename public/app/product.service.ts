@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 
+import 'rxjs/add/operator/toPromise';
 
 import { Product } from './models';
 import { PRODUCTS } from './products';
@@ -9,14 +11,20 @@ import { PRODUCTS } from './products';
 
 export class ProductService {
     private changeCartSource = new Subject<number>();
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    }
     changeCart$ = this.changeCartSource.asObservable();
+
+    constructor(private http: Http) { }
 
     changingCart(quantity: number) {
         this.changeCartSource.next(quantity);
     }
 
     getProducts(): Promise<Product[]> {
-        return Promise.resolve(PRODUCTS);
+        return this.http.get('products').toPromise().then(res => res.json() as Product[]).catch(this.handleError);
     }
 
     addProductsToCart(product: Product): void {
@@ -53,6 +61,6 @@ export class ProductService {
                 quantity += item.quantity;
             });
         }
-        return quantity
+        return quantity;
     }
 }
