@@ -90,9 +90,11 @@ function createProduct(req, res) {
 
 console.log(req.body);
 
+ let colors = req.body.colors.split(',');
+
     let newProduct = new Product({
             name: req.body.name,
-            colors: req.body.colors,
+            colors: colors,
             price: req.body.price,
             image: 'img/image.png',
             description: req.body.description,
@@ -100,4 +102,6 @@ console.log(req.body);
             quantity: 1
         });
     newProduct.save();
+    res.status(201);
+    res.send('New product was created!');
 }

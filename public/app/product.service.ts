@@ -27,8 +27,8 @@ export class ProductService {
         return this.http.get('products').toPromise().then(res => res.json() as Product[]).catch(this.handleError);
     }
 
-    createNewProduct(product: Product): void {
-        this.http.post('product', product).toPromise().catch(this.handleError);
+    createNewProduct(product: Product): Promise<any> {
+        return this.http.post('product', product).toPromise().catch(this.handleError);
     }
 
     addProductsToCart(product: Product): void {

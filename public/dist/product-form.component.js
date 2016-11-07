@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var product_service_1 = require('./product.service');
 var models_1 = require('./models');
+var alertify = require('alertify');
 var ProductFormComponent = (function () {
     function ProductFormComponent(productService) {
         this.productService = productService;
@@ -18,8 +19,13 @@ var ProductFormComponent = (function () {
         this.submitted = false;
     }
     ProductFormComponent.prototype.onSubmit = function () {
+        var _this = this;
         this.submitted = true;
-        this.productService.createNewProduct(this.product);
+        this.productService
+            .createNewProduct(this.product)
+            .then(function () {
+            alertify.success(_this.product.name + " was created");
+        });
         console.log(this.product);
     };
     ProductFormComponent = __decorate([
