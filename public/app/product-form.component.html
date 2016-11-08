@@ -1,23 +1,31 @@
-<form class="ui form" (ngSubmit)="onSubmit()">
-    <div class="field">
-        <label>Product Name</label>
-        <input name="name" placeholder="Product Name" type="text" [(ngModel)]="product.name">
+<div class="ui grid container">
+    <div class="six wide column">
+        <h3 class="ui dividing header">
+            Create New Product
+        </h3>
+        <form class="ui form" (ngSubmit)="onSubmit()" #productForm="ngForm">
+            <div class="field" [class.error]="name.invalid && name.touched">
+                <label>Product Name</label>
+                <input #name="ngModel" name="name" placeholder="Product Name" type="text" [(ngModel)]="product.name" required>
+            </div>
+            <div class="field" [class.error]="price.invalid && price.touched">
+                <label>Price</label>
+                <input #price="ngModel" name="price" placeholder="Price" type="text" [(ngModel)]="product.price" required>
+            </div>
+            <div class="field" [class.error]="image.invalid && image.touched">
+                <label>Image</label>
+                <input #image="ngModel" name="image" placeholder="Image" type="text" [(ngModel)]="product.image" required>
+            </div>
+            <div class="field" [class.error]="description.invalid && description.touched">
+                <label>Description</label>
+                <input #description="ngModel" name="description" placeholder="Description" type="text" [(ngModel)]="product.description"
+                    required>
+            </div>
+            <div class="field" [class.error]="colors.invalid && colors.touched">
+                <label>Colors</label>
+                <input #colors="ngModel" name="colors" placeholder="Colors" type="text" [(ngModel)]="product.colors" required>
+            </div>
+            <button [disabled]="!productForm.form.valid" class="ui primary button" type="submit">Submit</button>
+        </form>
     </div>
-    <div class="field">
-        <label>Price</label>
-        <input name="price" placeholder="Price" type="text" [(ngModel)]="product.price">
-    </div>
-    <div class="field">
-        <label>Image</label>
-        <input name="image" placeholder="Image" type="text" [(ngModel)]="product.image">
-    </div>
-    <div class="field">
-        <label>Description</label>
-        <input name="description" placeholder="Description" type="text" [(ngModel)]="product.description">
-    </div>
-    <div class="field">
-        <label>Colors</label>
-        <input name="colors" placeholder="Colors" type="text" [(ngModel)]="product.colors">
-    </div>
-    <button class="ui button" type="submit">Submit</button>
-</form>
+</div>
