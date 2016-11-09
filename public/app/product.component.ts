@@ -6,7 +6,12 @@ var alertify = require('alertify');
 
 @Component({
     selector: 'product',
-    templateUrl: 'app/product.component.html'
+    templateUrl: 'app/product.component.html',
+    styles: [`
+        .extra {
+            text-align: center;
+        }
+    `]
 })
 
 export class ProductComponent implements OnInit {

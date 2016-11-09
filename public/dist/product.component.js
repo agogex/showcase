@@ -27,7 +27,8 @@ var ProductComponent = (function () {
     ProductComponent = __decorate([
         core_1.Component({
             selector: 'product',
-            templateUrl: 'app/product.component.html'
+            templateUrl: 'app/product.component.html',
+            styles: ["\n        .extra {\n            text-align: center;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [product_service_1.ProductService])
     ], ProductComponent);
