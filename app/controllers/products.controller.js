@@ -2,8 +2,9 @@ const Product = require('../models/product');
 
 module.exports = {
     seedProducts: seedProducts,
-    showProducts: showProducts,
-    createProduct: createProduct
+    getProducts: getProducts,
+    createProduct: createProduct,
+    getOneProduct: getOneProduct
 }
 
 function seedProducts(req, res) {
@@ -73,7 +74,7 @@ function seedProducts(req, res) {
     res.send('Database seeded!');
 }
 
-function showProducts(req, res) {
+function getProducts(req, res) {
     Product.find({}, (err, products) => {
         if (err) {
             res.status(404);
@@ -81,6 +82,17 @@ function showProducts(req, res) {
         }
 
         res.json(products);
+    });
+}
+
+function getOneProduct(req, res) {
+    Product.findOne({
+        name: req.params.name
+    }, (err, product) => {
+        if (err) {
+            res.status(400).json(err);
+        }
+        res.json(product);
     });
 }
 

@@ -15,7 +15,8 @@ var ProductComponent = (function () {
     function ProductComponent(productService) {
         this.productService = productService;
     }
-    ProductComponent.prototype.addToCart = function (product) {
+    ProductComponent.prototype.addToCart = function (product, event) {
+        event.stopPropagation();
         this.productService.addProductsToCart(product);
         this.productService.changingCart(this.productService.getProductsQuantity());
         alertify.success(product.name + " was added to Cart");
@@ -23,6 +24,9 @@ var ProductComponent = (function () {
     ProductComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.productService.getProducts().then(function (products) { return _this.products = products; });
+    };
+    ProductComponent.prototype.editProduct = function (product) {
+        console.log(product);
     };
     ProductComponent = __decorate([
         core_1.Component({

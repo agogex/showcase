@@ -18,7 +18,8 @@ export class ProductComponent implements OnInit {
     products: Product[]
     constructor(private productService: ProductService) { }
 
-    addToCart(product: Product): void {
+    addToCart(product: Product, event): void {
+        event.stopPropagation();
         this.productService.addProductsToCart(product);
         this.productService.changingCart(this.productService.getProductsQuantity());
         alertify.success(`${product.name} was added to Cart`);
@@ -26,5 +27,9 @@ export class ProductComponent implements OnInit {
 
     ngOnInit(): void {
         this.productService.getProducts().then(products => this.products = products);
+    }
+
+    editProduct(product) {
+        console.log(product);
     }
 }

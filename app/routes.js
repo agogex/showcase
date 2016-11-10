@@ -5,5 +5,6 @@ const express = require('express'),
 module.exports = router;
 
 // router.get('/products/seed', products.seedProducts);
-router.get('/products', products.showProducts);
+router.get('/products', products.getProducts);
 router.post('/product', products.createProduct);
+router.get('/product/:name', products.getOneProduct);

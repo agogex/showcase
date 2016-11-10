@@ -1,6 +1,6 @@
 <div class="ui grid container stackable">
     <div class="four wide column" *ngFor="let product of products">
-        <div class="ui link card">
+        <div class="ui link card"  (click)="editProduct(product)">
             <div class="image">
                 <img [src]="product.image">
             </div>
@@ -12,7 +12,7 @@
             </div>
             <div class="extra content">
                 <!--<button class="ui primary button" (click)="addToCart(product)">Add to <i class="add to cart icon"></i></button>-->
-                <div class="ui  vertical animated primary basic button" tabindex="0" (click)="addToCart(product)">
+                <div class="ui  vertical animated primary basic button" tabindex="0" (click)="addToCart(product, $event)">
                     <div class="visible content">Add to Cart</div>
                     <div class="hidden content">
                         <i class="add to cart icon"></i>
