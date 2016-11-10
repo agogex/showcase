@@ -19,6 +19,9 @@ const routes: Routes = [
     }, {
         path: 'product-form',
         component: ProductFormComponent
+    }, {
+        path: 'product/:name',
+        component: EditProductComponent
     }
 ];
 

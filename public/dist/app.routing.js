@@ -17,6 +17,9 @@ var routes = [
     }, {
         path: 'product-form',
         component: product_form_component_1.ProductFormComponent
+    }, {
+        path: 'product/:name',
+        component: EditProductComponent
     }
 ];
 exports.routing = router_1.RouterModule.forRoot(routes);

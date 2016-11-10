@@ -10,6 +10,7 @@ import { TopMenu } from './top-menu.component';
 import { CartComponent } from './cart.component';
 import { routing } from './app.routing';
 import { ProductFormComponent } from './product-form.component';
+import { EditProductComponent } from './edit-product.component';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { ProductFormComponent } from './product-form.component';
         ColorPicComponent,
         TopMenu,
         CartComponent,
-        ProductFormComponent
+        ProductFormComponent,
+        EditProductComponent
     ],
     bootstrap: [AppComponent]
 })
