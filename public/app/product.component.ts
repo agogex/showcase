@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ProductService } from './product.service';
 import { Product, CartItem } from './models';
@@ -16,7 +17,10 @@ var alertify = require('alertify');
 
 export class ProductComponent implements OnInit {
     products: Product[]
-    constructor(private productService: ProductService) { }
+    constructor(
+        private productService: ProductService,
+        private router: Router
+    ) { }
 
     addToCart(product: Product, event): void {
         event.stopPropagation();
@@ -30,6 +34,7 @@ export class ProductComponent implements OnInit {
     }
 
     editProduct(product) {
+        this.router.navigate(['/product-edit', product.name]);
         console.log(product);
     }
 }

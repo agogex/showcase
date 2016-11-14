@@ -11,10 +11,12 @@ import { PRODUCTS } from './products';
 
 export class ProductService {
     private changeCartSource = new Subject<number>();
+    
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
+
     changeCart$ = this.changeCartSource.asObservable();
 
     constructor(private http: Http) { }
@@ -25,6 +27,10 @@ export class ProductService {
 
     getProducts(): Promise<Product[]> {
         return this.http.get('products').toPromise().then(res => res.json() as Product[]).catch(this.handleError);
+    }
+
+    getOneProduct(name): Promise<Product> {
+        return this.http.get(`product\\${name}`).toPromise().then(res => res.json() as Product).catch(this.handleError);
     }
 
     createNewProduct(product: Product): Promise<any> {

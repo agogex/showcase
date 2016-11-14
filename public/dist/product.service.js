@@ -28,6 +28,9 @@ var ProductService = (function () {
     ProductService.prototype.getProducts = function () {
         return this.http.get('products').toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
     };
+    ProductService.prototype.getOneProduct = function (name) {
+        return this.http.get("product\\" + name).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
+    };
     ProductService.prototype.createNewProduct = function (product) {
         return this.http.post('product', product).toPromise().catch(this.handleError);
     };

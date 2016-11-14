@@ -86,9 +86,12 @@ function getProducts(req, res) {
 }
 
 function getOneProduct(req, res) {
+    console.log(req.params.name);
     Product.findOne({
         name: req.params.name
     }, (err, product) => {
+        console.log(`err: ${err}`);
+        console.log(`product: ${product}`);
         if (err) {
             res.status(400).json(err);
         }

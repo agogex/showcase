@@ -1,9 +1,10 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+//App's Components
 import { ProductComponent } from './product.component';
 import { CartComponent } from './cart.component';
 import { ProductFormComponent } from './product-form.component';
+import { EditProductComponent } from './edit-product.component';
 
 const routes: Routes = [
     {
@@ -20,7 +21,7 @@ const routes: Routes = [
         path: 'product-form',
         component: ProductFormComponent
     }, {
-        path: 'product/:name',
+        path: 'product-edit/:name',
         component: EditProductComponent
     }
 ];

@@ -9,11 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var product_service_1 = require('./product.service');
 var alertify = require('alertify');
 var ProductComponent = (function () {
-    function ProductComponent(productService) {
+    function ProductComponent(productService, router) {
         this.productService = productService;
+        this.router = router;
     }
     ProductComponent.prototype.addToCart = function (product, event) {
         event.stopPropagation();
@@ -26,6 +28,7 @@ var ProductComponent = (function () {
         this.productService.getProducts().then(function (products) { return _this.products = products; });
     };
     ProductComponent.prototype.editProduct = function (product) {
+        this.router.navigate(['/product-edit', product.name]);
         console.log(product);
     };
     ProductComponent = __decorate([
@@ -34,7 +37,7 @@ var ProductComponent = (function () {
             templateUrl: 'app/product.component.html',
             styles: ["\n        .extra {\n            text-align: center;\n        }\n    "]
         }), 
-        __metadata('design:paramtypes', [product_service_1.ProductService])
+        __metadata('design:paramtypes', [product_service_1.ProductService, router_1.Router])
     ], ProductComponent);
     return ProductComponent;
 }());
