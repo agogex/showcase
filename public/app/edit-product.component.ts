@@ -22,17 +22,19 @@ export class EditProductComponent implements OnInit {
 
     ngOnInit() {
         let name: string = this.route.snapshot.params['name'];
-        console.log(`name: ${name}`);
         this.productService.getOneProduct(name).then(product => this.product = product);
     }
 
     onSubmit() {
         this.productService
             .editProduct(this.product)
-            .then(() => {
-                alertify.success(`${this.product.name} was edited`);
-                this.router.navigate(['/showcase']);
-            });
+            .then( 
+                () => {
+                    alertify.success(`${this.product.name} was edited`);
+                    this.router.navigate(['/showcase']);
+                },
+                () => alertify.error(`Something was wrong :(`)
+            );
     }
 
 }

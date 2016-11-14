@@ -23,7 +23,6 @@ var EditProductComponent = (function () {
     EditProductComponent.prototype.ngOnInit = function () {
         var _this = this;
         var name = this.route.snapshot.params['name'];
-        console.log("name: " + name);
         this.productService.getOneProduct(name).then(function (product) { return _this.product = product; });
     };
     EditProductComponent.prototype.onSubmit = function () {
@@ -33,7 +32,7 @@ var EditProductComponent = (function () {
             .then(function () {
             alertify.success(_this.product.name + " was edited");
             _this.router.navigate(['/showcase']);
-        });
+        }, function () { return alertify.error("Something was wrong :("); });
     };
     EditProductComponent = __decorate([
         core_1.Component({

@@ -87,12 +87,13 @@ function getProducts(req, res) {
 }
 
 function editProduct(req, res) {
+    console.log(req.body);
     Product.findOneAndUpdate({
         name: req.body.name
     }, {
         $set: {
             name: req.body.name,
-            colors: req.body.colors.split(','),
+            colors: req.body.colors.split ? req.body.colors.split(',') : req.body.colors,
             price: req.body.price,
             description: req.body.description
         },
