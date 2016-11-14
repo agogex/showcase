@@ -8,3 +8,4 @@ module.exports = router;
 router.get('/products', products.getProducts);
 router.post('/product', products.createProduct);
 router.get('/product/:name', products.getOneProduct);
+router.post('/product/edit', products.editProduct);

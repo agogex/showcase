@@ -12,8 +12,10 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var product_service_1 = require('./product.service');
 var models_1 = require('./models');
+var alertify = require('alertify');
 var EditProductComponent = (function () {
-    function EditProductComponent(route, productService) {
+    function EditProductComponent(router, route, productService) {
+        this.router = router;
         this.route = route;
         this.productService = productService;
         this.product = new models_1.Product();
@@ -24,12 +26,21 @@ var EditProductComponent = (function () {
         console.log("name: " + name);
         this.productService.getOneProduct(name).then(function (product) { return _this.product = product; });
     };
+    EditProductComponent.prototype.onSubmit = function () {
+        var _this = this;
+        this.productService
+            .editProduct(this.product)
+            .then(function () {
+            alertify.success(_this.product.name + " was edited");
+            _this.router.navigate(['/showcase']);
+        });
+    };
     EditProductComponent = __decorate([
         core_1.Component({
             selector: 'edit-product',
             templateUrl: 'app/edit-product.component.html'
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, product_service_1.ProductService])
+        __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, product_service_1.ProductService])
     ], EditProductComponent);
     return EditProductComponent;
 }());

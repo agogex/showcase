@@ -29,10 +29,13 @@ var ProductService = (function () {
         return this.http.get('products').toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
     };
     ProductService.prototype.getOneProduct = function (name) {
-        return this.http.get("product\\" + name).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
+        return this.http.get("product/" + name).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
     };
     ProductService.prototype.createNewProduct = function (product) {
         return this.http.post('product', product).toPromise().catch(this.handleError);
+    };
+    ProductService.prototype.editProduct = function (product) {
+        return this.http.post('product/edit', product).toPromise().catch(this.handleError);
     };
     ProductService.prototype.addProductsToCart = function (product) {
         var products = JSON.parse(localStorage.getItem('products')) || [];

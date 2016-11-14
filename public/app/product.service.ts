@@ -30,11 +30,15 @@ export class ProductService {
     }
 
     getOneProduct(name): Promise<Product> {
-        return this.http.get(`product\\${name}`).toPromise().then(res => res.json() as Product).catch(this.handleError);
+        return this.http.get(`product/${name}`).toPromise().then(res => res.json() as Product).catch(this.handleError);
     }
 
     createNewProduct(product: Product): Promise<any> {
         return this.http.post('product', product).toPromise().catch(this.handleError);
+    }
+
+    editProduct(product: Product): Promise<any> {
+        return this.http.post('product/edit', product).toPromise().catch(this.handleError);
     }
 
     addProductsToCart(product: Product): void {

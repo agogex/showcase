@@ -4,7 +4,8 @@ module.exports = {
     seedProducts: seedProducts,
     getProducts: getProducts,
     createProduct: createProduct,
-    getOneProduct: getOneProduct
+    getOneProduct: getOneProduct,
+    editProduct: editProduct
 }
 
 function seedProducts(req, res) {
@@ -82,6 +83,28 @@ function getProducts(req, res) {
         }
 
         res.json(products);
+    });
+}
+
+function editProduct(req, res) {
+    Product.findOneAndUpdate({
+        name: req.body.name
+    }, {
+        $set: {
+            name: req.body.name,
+            colors: req.body.colors.split(','),
+            price: req.body.price,
+            description: req.body.description
+        },
+    }, {
+        new: true
+    }, (err, product) => {
+        if (err) {
+            res.status(404);
+            res.send('Products not found');
+        }
+
+        res.json(product);
     });
 }
 
