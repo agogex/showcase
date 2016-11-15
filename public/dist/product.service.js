@@ -16,6 +16,7 @@ require('rxjs/add/operator/map');
 var ProductService = (function () {
     function ProductService(http) {
         this.http = http;
+        this.apiUrl = 'api/products';
         this.changeCartSource = new Subject_1.Subject();
         this.changeCart$ = this.changeCartSource.asObservable();
     }
@@ -30,16 +31,16 @@ var ProductService = (function () {
     //     return this.http.get('products').toPromise().then(res => res.json() as Product[]).catch(this.handleError);
     // }
     ProductService.prototype.getProducts = function () {
-        return this.http.get('products').map(function (res) { return res.json(); });
+        return this.http.get(this.apiUrl).map(function (res) { return res.json(); });
     };
     ProductService.prototype.getOneProduct = function (name) {
-        return this.http.get("product/" + name).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
+        return this.http.get(this.apiUrl + "/" + name).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
     };
     ProductService.prototype.createNewProduct = function (product) {
-        return this.http.post('product', product).toPromise().catch(this.handleError);
+        return this.http.post(this.apiUrl, product).toPromise().catch(this.handleError);
     };
     ProductService.prototype.editProduct = function (product) {
-        return this.http.post('product/edit', product).toPromise().catch(this.handleError);
+        return this.http.put(this.apiUrl + "/" + product.name, product).toPromise().catch(this.handleError);
     };
     ProductService.prototype.addProductsToCart = function (product) {
         var products = JSON.parse(localStorage.getItem('products')) || [];

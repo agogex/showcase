@@ -11,6 +11,7 @@ import { PRODUCTS } from './products';
 @Injectable()
 
 export class ProductService {
+    private apiUrl: string = 'api/products';
     private changeCartSource = new Subject<number>();
     
     private handleError(error: any): Promise<any> {
@@ -31,19 +32,19 @@ export class ProductService {
     // }
 
     getProducts() {
-        return this.http.get('products').map(res => res.json() as Product[]);
+        return this.http.get(this.apiUrl).map(res => res.json() as Product[]);
     }
 
     getOneProduct(name): Promise<Product> {
-        return this.http.get(`product/${name}`).toPromise().then(res => res.json() as Product).catch(this.handleError);
+        return this.http.get(`${this.apiUrl}/${name}`).toPromise().then(res => res.json() as Product).catch(this.handleError);
     }
 
     createNewProduct(product: Product): Promise<any> {
-        return this.http.post('product', product).toPromise().catch(this.handleError);
+        return this.http.post(this.apiUrl, product).toPromise().catch(this.handleError);
     }
 
     editProduct(product: Product): Promise<any> {
-        return this.http.post('product/edit', product).toPromise().catch(this.handleError);
+        return this.http.put(`${this.apiUrl}/${product.name}`, product).toPromise().catch(this.handleError);
     }
 
     addProductsToCart(product: Product): void {
