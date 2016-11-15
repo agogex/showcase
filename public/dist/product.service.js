@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Subject_1 = require('rxjs/Subject');
 require('rxjs/add/operator/toPromise');
+require('rxjs/add/operator/map');
 var ProductService = (function () {
     function ProductService(http) {
         this.http = http;
@@ -25,8 +26,11 @@ var ProductService = (function () {
     ProductService.prototype.changingCart = function (quantity) {
         this.changeCartSource.next(quantity);
     };
+    // getProducts(): Promise<Product[]> {
+    //     return this.http.get('products').toPromise().then(res => res.json() as Product[]).catch(this.handleError);
+    // }
     ProductService.prototype.getProducts = function () {
-        return this.http.get('products').toPromise().then(function (res) { return res.json(); }).catch(this.handleError);
+        return this.http.get('products').map(function (res) { return res.json(); });
     };
     ProductService.prototype.getOneProduct = function (name) {
         return this.http.get("product/" + name).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);

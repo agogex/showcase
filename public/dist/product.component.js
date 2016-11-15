@@ -23,9 +23,12 @@ var ProductComponent = (function () {
         this.productService.changingCart(this.productService.getProductsQuantity());
         alertify.success(product.name + " was added to Cart");
     };
+    // ngOnInit(): void {
+    //     this.productService.getProducts().then(products => this.products = products);
+    // }
     ProductComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.productService.getProducts().then(function (products) { return _this.products = products; });
+        this.productService.getProducts().subscribe(function (products) { return _this.products = products; });
     };
     ProductComponent.prototype.editProduct = function (product) {
         this.router.navigate(['/product-edit', product.name]);

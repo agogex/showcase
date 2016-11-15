@@ -29,8 +29,12 @@ export class ProductComponent implements OnInit {
         alertify.success(`${product.name} was added to Cart`);
     }
 
+    // ngOnInit(): void {
+    //     this.productService.getProducts().then(products => this.products = products);
+    // }
+
     ngOnInit(): void {
-        this.productService.getProducts().then(products => this.products = products);
+        this.productService.getProducts().subscribe(products => this.products = products);
     }
 
     editProduct(product) {

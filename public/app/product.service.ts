@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 import { Product } from './models';
 import { PRODUCTS } from './products';
@@ -25,8 +26,12 @@ export class ProductService {
         this.changeCartSource.next(quantity);
     }
 
-    getProducts(): Promise<Product[]> {
-        return this.http.get('products').toPromise().then(res => res.json() as Product[]).catch(this.handleError);
+    // getProducts(): Promise<Product[]> {
+    //     return this.http.get('products').toPromise().then(res => res.json() as Product[]).catch(this.handleError);
+    // }
+
+    getProducts() {
+        return this.http.get('products').map(res => res.json() as Product[]);
     }
 
     getOneProduct(name): Promise<Product> {
