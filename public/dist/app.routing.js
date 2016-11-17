@@ -1,10 +1,10 @@
 "use strict";
 var router_1 = require('@angular/router');
 //App's Components
-var product_component_1 = require('./product.component');
-var cart_component_1 = require('./cart.component');
-var product_form_component_1 = require('./product-form.component');
-var edit_product_component_1 = require('./edit-product.component');
+var product_component_1 = require('./product/product.component');
+var cart_component_1 = require('./cart/cart.component');
+var product_form_component_1 = require('./product-form/product-form.component');
+var edit_product_component_1 = require('./edit-product/edit-product.component');
 var routes = [
     {
         path: '',

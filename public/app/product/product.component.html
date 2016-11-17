@@ -1,0 +1,24 @@
+<div class="ui grid container stackable">
+    <div class="four wide column" *ngFor="let product of products">
+        <div class="ui link card"  (click)="editProduct(product)">
+            <div class="image">
+                <img [src]="product.image">
+            </div>
+            <div class="content">
+                <div class="header">{{ product.name }}</div>
+                <div class="meta">{{ product.price | currency:'USD':true}}</div>
+                <div class="description">{{ product.description }}</div>
+                <color-pic [colors]="product.colors" (colorSelected)="product.selectedColor = $event"></color-pic>
+            </div>
+            <div class="extra content">
+                <!--<button class="ui primary button" (click)="addToCart(product)">Add to <i class="add to cart icon"></i></button>-->
+                <div class="ui  vertical animated primary basic button" tabindex="0" (click)="addToCart(product, $event)">
+                    <div class="visible content">Add to Cart</div>
+                    <div class="hidden content">
+                        <i class="add to cart icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

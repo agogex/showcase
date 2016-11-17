@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import { ProductService } from './product.service';
-import { Product } from './models';
+import { ProductService } from '../services/product.service';
+import { Product } from '../models/Product';
 var alertify = require('alertify');
 
 @Component({
     selector: 'product-form',
-    templateUrl: 'app/product-form.component.html'
+    templateUrl: 'app/product-form/product-form.component.html'
 })
 
 export class ProductFormComponent {

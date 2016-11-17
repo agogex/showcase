@@ -9,23 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var product_service_1 = require('./services/product.service');
-var AppComponent = (function () {
-    function AppComponent(productService) {
+var product_service_1 = require('../services/product.service');
+var TopMenu = (function () {
+    function TopMenu(productService) {
+        var _this = this;
         this.productService = productService;
+        this.subscription = productService.changeCart$.subscribe(function (quantity) { return _this.productQuantity = quantity; });
     }
-    AppComponent.prototype.getQuantity = function () {
-        return this.productService.getProductsQuantity();
+    TopMenu.prototype.ngOnInit = function () {
+        this.productQuantity = this.productService.getProductsQuantity();
     };
-    AppComponent = __decorate([
+    TopMenu.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
+    TopMenu = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n        <top-menu></top-menu>\n        <router-outlet></router-outlet>\n    ",
-            providers: [product_service_1.ProductService]
+            selector: 'top-menu',
+            templateUrl: 'app/top-menu/top-menu.component.html',
+            styles: ["\n        .menu {\n            margin-bottom: 20px !important;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [product_service_1.ProductService])
-    ], AppComponent);
-    return AppComponent;
+    ], TopMenu);
+    return TopMenu;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.TopMenu = TopMenu;
+//# sourceMappingURL=top-menu.component.js.map

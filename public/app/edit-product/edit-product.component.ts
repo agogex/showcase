@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import { ProductService } from './product.service';
-import { Product } from './models';
+import { ProductService } from '../services/product.service';
+import { Product } from '../models/Product';
 var alertify = require('alertify');
 
 @Component({
     selector: 'edit-product',
-    templateUrl: 'app/edit-product.component.html'
+    templateUrl: 'app/edit-product/edit-product.component.html'
 })
 
 export class EditProductComponent implements OnInit {

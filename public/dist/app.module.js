@@ -15,12 +15,12 @@ var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 //App's Components
 var app_component_1 = require('./app.component');
-var product_component_1 = require('./product.component');
-var color_pic_component_1 = require('./color-pic.component');
-var top_menu_component_1 = require('./top-menu.component');
-var cart_component_1 = require('./cart.component');
-var product_form_component_1 = require('./product-form.component');
-var edit_product_component_1 = require('./edit-product.component');
+var product_component_1 = require('./product/product.component');
+var color_pic_component_1 = require('./color-pic/color-pic.component');
+var top_menu_component_1 = require('./top-menu/top-menu.component');
+var cart_component_1 = require('./cart/cart.component');
+var product_form_component_1 = require('./product-form/product-form.component');
+var edit_product_component_1 = require('./edit-product/edit-product.component');
 //Routing
 var app_routing_1 = require('./app.routing');
 var AppModule = (function () {

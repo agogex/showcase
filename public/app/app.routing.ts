@@ -1,10 +1,10 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //App's Components
-import { ProductComponent } from './product.component';
-import { CartComponent } from './cart.component';
-import { ProductFormComponent } from './product-form.component';
-import { EditProductComponent } from './edit-product.component';
+import { ProductComponent } from './product/product.component';
+import { CartComponent } from './cart/cart.component';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 const routes: Routes = [
     {

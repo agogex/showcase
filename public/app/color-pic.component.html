@@ -1,3 +1,0 @@
-<button class="ui circular icon button" *ngFor="let color of colors" [ngClass]="color" (click)="selectColor(color); $event.stopPropagation()">
-    <i class="icon" [ngClass]="{checkmark: color == selectedColor}"></i>
-</button>

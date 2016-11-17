@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Product } from './models';
-import { ProductService } from'./product.service';
+import { Product } from '../models/Product';
+import { ProductService } from'../services/product.service';
 var alertify = require('alertify');
 
 @Component({
     selector: 'cart',
-    templateUrl: 'app/cart.component.html',
+    templateUrl: 'app/cart/cart.component.html',
     styles: [`.remove { cursor: pointer; }`]
 })
 
