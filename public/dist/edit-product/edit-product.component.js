@@ -34,6 +34,19 @@ var EditProductComponent = (function () {
             _this.router.navigate(['/showcase']);
         }, function () { return alertify.error("Something was wrong :("); });
     };
+    EditProductComponent.prototype.confirm = function (name) {
+        var _this = this;
+        alertify.confirm("Are You Sure?", "Delete Product " + name + "?", function () { return _this.delete(name); }, function () { return alertify.message("Product " + name + " wasn't deleted..."); }).set({ transition: 'zoom' });
+    };
+    EditProductComponent.prototype.delete = function (name) {
+        var _this = this;
+        this.productService
+            .deleteProduct(name)
+            .then(function () {
+            alertify.success(name + " was deleted");
+            _this.router.navigate(['/showcase']);
+        }, function () { return alertify.error("Something was wrong :("); });
+    };
     EditProductComponent = __decorate([
         core_1.Component({
             selector: 'edit-product',

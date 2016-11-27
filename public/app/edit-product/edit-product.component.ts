@@ -37,4 +37,24 @@ export class EditProductComponent implements OnInit {
             );
     }
 
+    confirm(name: string) {
+        alertify.confirm(
+            `Are You Sure?`, 
+            `Delete Product ${name}?`, 
+            () => this.delete(name), 
+            () => alertify.message(`Product ${name} wasn't deleted...`)
+        ).set({transition:'zoom'});
+    }
+
+    delete(name: string) {
+        this.productService
+            .deleteProduct(name)
+            .then(
+                () => {
+                    alertify.success(`${name} was deleted`);
+                    this.router.navigate(['/showcase']);
+                },
+                () => alertify.error(`Something was wrong :(`)
+            )
+    }
 }

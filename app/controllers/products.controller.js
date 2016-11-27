@@ -5,7 +5,8 @@ module.exports = {
     getProducts: getProducts,
     createProduct: createProduct,
     getOneProduct: getOneProduct,
-    editProduct: editProduct
+    editProduct: editProduct,
+    deleteProduct: deleteProduct
 }
 
 function seedProducts(req, res) {
@@ -125,8 +126,6 @@ function getOneProduct(req, res) {
 
 function createProduct(req, res) {
 
-    console.log(req.body);
-
     let colors = req.body.colors.split(',');
 
     let newProduct = new Product({
@@ -141,4 +140,15 @@ function createProduct(req, res) {
     newProduct.save();
     res.status(201);
     res.send('New product was created!');
+}
+
+function deleteProduct(req, res) {
+    const name = req.params.name;
+
+    Product.findOneAndRemove({name: name}, (err, product) => {
+        if (err) {
+            res.status(400).json(err);
+        }
+        res.json(product);
+    });
 }

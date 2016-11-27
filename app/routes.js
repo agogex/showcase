@@ -9,3 +9,4 @@ router.get('/api/products', products.getProducts);
 router.post('/api/products', products.createProduct);
 router.get('/api/products/:name', products.getOneProduct);
 router.put('/api/products/:name', products.editProduct);
+router.delete('/api/products/:name', products.deleteProduct);

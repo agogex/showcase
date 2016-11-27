@@ -26,6 +26,12 @@
                 <input #colors="ngModel" name="colors" placeholder="Colors" type="text" [(ngModel)]="product.colors" required>
             </div>
             <button [disabled]="!productForm.form.valid" class="ui primary button" type="submit">Submit</button>
+            <div (click)="confirm(product.name)" class="ui animated fade negative button" tabindex="0">
+                <div class="visible content">Delete</div>
+                <div class="hidden content">
+                    <i class="trash icon"></i>
+                </div>
+            </div>
         </form>
     </div>
 </div>

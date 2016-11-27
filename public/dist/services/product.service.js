@@ -42,6 +42,9 @@ var ProductService = (function () {
     ProductService.prototype.editProduct = function (product) {
         return this.http.put(this.apiUrl + "/" + product.name, product).toPromise().catch(this.handleError);
     };
+    ProductService.prototype.deleteProduct = function (name) {
+        return this.http.delete(this.apiUrl + "/" + name).toPromise().catch(this.handleError);
+    };
     ProductService.prototype.addProductsToCart = function (product) {
         var products = JSON.parse(localStorage.getItem('products')) || [];
         var insertNew = true;

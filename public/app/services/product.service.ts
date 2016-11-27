@@ -46,6 +46,10 @@ export class ProductService {
         return this.http.put(`${this.apiUrl}/${product.name}`, product).toPromise().catch(this.handleError);
     }
 
+    deleteProduct(name: string) {
+        return this.http.delete(`${this.apiUrl}/${name}`).toPromise().catch(this.handleError);
+    }
+
     addProductsToCart(product: Product): void {
         let products: Product[] = JSON.parse(localStorage.getItem('products')) || [];
         let insertNew: boolean = true;
