@@ -5,8 +5,7 @@ const express = require('express'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
 	uriUtil = require('mongodb-uri'),
-    mongooseUri = uriUtil.formatMongoose(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}`),
-	config = require('./config');
+    mongooseUri = uriUtil.formatMongoose(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}`);
 
 
 app.use(express.static('public'));
