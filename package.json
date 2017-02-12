@@ -4,7 +4,6 @@
   "scripts": {
     "start": "node server.js",
     "server": "tsc && concurrently \"npm run tsc:w\" nodemon server.js",
-    "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings"
