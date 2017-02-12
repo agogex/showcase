@@ -2,8 +2,8 @@
   "name": "showcase",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run server\" ",
-    "server": "nodemon server.js",
+    "start": "node server.js",
+    "server": "tsc && concurrently \"npm run tsc:w\" nodemon server.js",
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",

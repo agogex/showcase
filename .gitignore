@@ -1,2 +1,9 @@
 /node_modules
+/bin
+/obj
+/.vscode
+*.njsproj
+*.sln
+/.vs
 npm-debug.log.*
+*.log

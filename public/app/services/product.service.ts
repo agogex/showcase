@@ -54,7 +54,7 @@ export class ProductService {
         let products: Product[] = JSON.parse(localStorage.getItem('products')) || [];
         let insertNew: boolean = true;
         products.forEach((item) => {
-            if (item.name === product.name && item.selectedColor === product.selectedColor) {
+            if (item._id === product._id && item.selectedColor === product.selectedColor) {
                 item.quantity++;
                 insertNew = false;
             }

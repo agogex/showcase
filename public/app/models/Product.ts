@@ -1,4 +1,5 @@
 export class Product {
+    _id: string;
     name: string;
     colors: string[];
     price: number;

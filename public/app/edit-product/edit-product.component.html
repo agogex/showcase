@@ -25,6 +25,7 @@
                 <label>Colors</label>
                 <input #colors="ngModel" name="colors" placeholder="Colors" type="text" [(ngModel)]="product.colors" required>
             </div>
+            <!--<color-pic [colors]="product.colors"></color-pic>-->
             <button [disabled]="!productForm.form.valid" class="ui primary button" type="submit">Submit</button>
             <div (click)="confirm(product.name)" class="ui animated fade negative button" tabindex="0">
                 <div class="visible content">Delete</div>

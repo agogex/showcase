@@ -49,7 +49,7 @@ var ProductService = (function () {
         var products = JSON.parse(localStorage.getItem('products')) || [];
         var insertNew = true;
         products.forEach(function (item) {
-            if (item.name === product.name && item.selectedColor === product.selectedColor) {
+            if (item._id === product._id && item.selectedColor === product.selectedColor) {
                 item.quantity++;
                 insertNew = false;
             }
